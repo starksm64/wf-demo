@@ -3,8 +3,9 @@ node("launchpad-maven") {
   def sso_url
   stage("Deploy SSO") {
     sh "cd sso; mvn fabric8:deploy"
+    sh 'pwd'
     SSO_URL = sh (
-      script: 'java -jar target/sso-client.jar --displaySSOURL',
+      script: 'cd sso; java -jar target/sso-client.jar --displaySSOURL',
       returnStdout: true
     ).trim()
     SSO_URL = ( SSO_URL =~ /Using auth server URL: (.+)/)
