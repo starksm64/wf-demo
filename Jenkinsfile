@@ -14,6 +14,5 @@ node("launchpad-maven") {
   stage("Build") {
     sh "cd app; mvn -DSSO_AUTH_SERVER_URL=${SSO_URL} fabric8:deploy -Popenshift -DskipTests"
   }
-  stage("Deploy")
 }
 
